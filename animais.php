@@ -61,13 +61,9 @@ error_reporting(E_ALL);
       white-space: nowrap;
       -webkit-overflow-scrolling: touch;
     }
-    /* Show it is fixed to the top */
     body {
       min-height: 75rem;
       padding-top: 4.5rem;
-    }
-    td>img {
-      width: 40px;
     }
   </style>
 </head>
@@ -79,39 +75,41 @@ error_reporting(E_ALL);
     <div class="bg-light p-5 rounded">
       <?php
         if (isset($_COOKIE['mensagem'])) {
-          echo "<div class='alert alert-success'>
-                  {$_COOKIE['mensagem']}
-                </div>";
+          echo "
+            <div class='alert alert-success'>
+              {$_COOKIE['mensagem']}
+            </div>";
           unset($_COOKIE['mensagem']);
           setcookie("mensagem", "", 1);
         }
       ?>
-      <h1>Lista de Clientes</h1>
-      <a href="frmCliente.php" class="btn btn-primary">Novo</a>
+      <h1>Lista de Pets</h1>
+      <a href="frmAnimal.php" class="btn btn-primary">Novo</a>
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
             <th>Nome</th>
-            <th>CPF</th>
-            <th>Telefone</th>
-            <th>Nome do Pet</th>
+            <th>Idade</th>
             <th>Raça</th>
+            <th>Sexo</th>
+            <th>Dono do Pet</th>
             <th>Excluir</th>
             <th>Editar</th>
           </tr>
         </thead>
         <tbody>
           <?php
-            $dados = getClientes(1);
-            foreach ($dados as $dado) {
-              echo " <tr>
-                      <td>{$dado['nome']}</td>
-                      <td>{$dado['cpf']}</td>
-                      <td>{$dado['telefone']}</td>
-                      <td>{$dado['nomePet']}</td>
-                      <td>{$dado['racaPet']}</td>
-                      <td><a href='excluirCliente.php?idPet={$dado['idPet']}' class='btn btn-danger'>-</a></td>
-                      <td><a href='editarCliente.php?id={$dado['id']}' class='btn btn-primary'>+</a></td>
+            $animais = getAnimais();
+            foreach ($animais as $animal) {
+              $data = date('Y') - date("Y", strtotime($animal['idade']));
+              echo "<tr>
+                      <td>{$animal['nome']}</td>
+                      <td>$data Anos</td>
+                      <td>{$animal['raca']}</td>
+                      <td>{$animal['sexo']}</td>
+                      <td>{$animal['nomeDono']}</td>
+                      <td><a href='excluirAnimal.php?id={$animal['id']}' class='btn btn-danger'>-</a></td>
+                      <td><a href='editarAnimal.php?id={$animal['id']}' class='btn btn-primary'>+</a></td>
                     </tr>";
             }
           ?>

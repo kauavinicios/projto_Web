@@ -1,16 +1,20 @@
 <?php
+include_once "funcao.php";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-if (!isset($cliente)) 
-{
-  $cliente = array();
-  $cliente['id'] = 0;
-  $cliente['nome'] = "";
-  $cliente['cpf'] = "";
-  $cliente['telefone'] = 0;
+if (!isset($animal)) {
+  $animal = array();
+  $animal['id'] = 0;
+  $animal['nome'] = "";
+  $animal['idade'] = "";
+  $animal['raca'] = "";
+  $animal['sexo'] = "";
+  $animal['foto'] = "";
+  $animal['id_dono'] = 0;
 }
+$donos = getClientes(0);
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -46,7 +50,7 @@ if (!isset($cliente))
     .b-example-vr {
       flex-shrink: 0;
       width: 1.5rem;
-      height: 100vh;
+     height: 100vh;
     }
     .bi {
       vertical-align: -.125em;
@@ -72,12 +76,6 @@ if (!isset($cliente))
       min-height: 75rem;
       padding-top: 4.5rem;
     }
-    .container img {
-      width: 200px;
-      border: 1px solid gray;
-      padding: 0.5rem;
-      border-radius: 10px;
-    }
   </style>
 </head>
 <body>
@@ -86,20 +84,43 @@ if (!isset($cliente))
   ?>
   <main class="container">
     <div class="bg-light p-5 rounded">
-      <h1>Cadastro de Cliente</h1>
-      <form class="m-5 container" action="salvarCliente.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" id="id" value="<?php echo $cliente['id']; ?>">
+      <h1>Cadastro de Área</h1>
+      <form class="m-5 container" action="salvarAnimal.php" method="post">
+        <input type="hidden" name="id" id="id" value="<?php echo $animal['id']; ?>">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $cliente['nome'];?>">
+          <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $animal['nome']; ?>">
         </div>
         <div class="mb-3">
-          <label for="cpf" class="form-label">CPF</label>
-          <input type="text" class="form-control" id="cpf" name="cpf" value="<?php echo $cliente['cpf'];?>">
+          <label for="idade" class="form-label">Data de Nacimento</label>
+          <input type="date" class="form-control" id="idade" name="idade" value="<?php echo $animal['idade']; ?>">
         </div>
         <div class="mb-3">
-          <label for="telefone" class="form-label">Telefone</label>
-          <input type="number" class="form-control" id="telefone" name="telefone" value="<?php echo $cliente['telefone'];?>">
+          <label for="raca" class="form-label">Raça</label>
+          <input type="text" class="form-control" id="raca" name="raca" value="<?php echo $animal['raca']; ?>">
+        </div>
+        <div class="mb-3">
+          <label for="sexo" class="form-label">Sexo</label>
+          <input class="form-control" list="datalistOptions" name="sexo" id="sexo" value="<?php echo $animal['sexo']; ?>">
+          <datalist id="datalistOptions">
+            <option name="sexo" value="femea">
+            <option name="sexo" value="macho">
+          </datalist>
+        </div>
+        <div class="mb-3">
+          <label for="foto" class="form-label">Foto</label>
+          <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
+        </div>
+        <div class="mb-3">
+          <label for="cod_dono" class="form-label">Dono</label>
+          <select class="form-select" name="cod_dono" id="cod_dono">
+            <?php
+              foreach ($donos as $dono) {
+                $selected = $animal['cod_dono'] == $dono['id']?'selected':'';
+                echo "<option $selected name='cod_dono' value='{$dono['id']}'>{$dono['nome']}</option>";
+              }
+            ?>
+          </select>
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
       </form>

@@ -5,6 +5,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 $id = $_GET['id'];
-$cliente = getCliente($id);
-include_once "frmCliente.php";
+$animal = getAnimal($id);
+excluirAnimal($id);
+setcookie("mensagem", "Pet {$animal['nome']} foi excluída");
+header('location: animais.php');
 ?>
