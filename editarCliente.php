@@ -5,7 +5,7 @@
   error_reporting(E_ALL);
   $id = $_GET['id'];
 
-  $professor = getCliente($id);
+  $cliente = getCliente($id);
 
   include_once "frmProfessor.php";
  ?>

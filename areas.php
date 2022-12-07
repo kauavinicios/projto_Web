@@ -7,7 +7,7 @@
 
 
  <!doctype html>
- <html lang="en">
+ <html lang="pt-br">
    <head>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -110,22 +110,28 @@
      <table class="table table-striped table-bordered">
        <thead>
          <tr>
-           <th>ID</th>
-           <th>Descrição</th>
+           <th>Dono do Pet</th>
+           <th>Nome</th>
+           <th>Idade</th>
+           <th>Raça</th>
+           <th>Sexo</th>
            <th>Excluir</th>
            <th>Editar</th>
          </tr>
        </thead>
      <tbody>
        <?php
-         $areas = getAreas();
-         foreach ($areas as $area) {
+         $animais = getAnimais();
+         foreach ($animais as $animal) {
            echo "
            <tr>
-              <td>{$area['id']}</td>
-              <td>{$area['descricao']}</td>
-              <td><a href='excluirArea.php?id={$area['id']}' class='btn btn-danger'>-</a></td>
-              <td><a href='editarArea.php?id={$area['id']}' class='btn btn-primary'>+</a></td>
+              <td>{$animal['idnomeDono']}</td>
+              <td>{$animal['nome']}</td>
+              <td>{$animal['']}</td>
+              <td>{$animal['descricao']}</td>
+              <td>{$animal['descricao']}</td>
+              <td><a href='excluirArea.php?id={$animal['id']}' class='btn btn-danger'>-</a></td>
+              <td><a href='editarArea.php?id={$animal['id']}' class='btn btn-primary'>+</a></td>
            </tr>";
          }
         ?>

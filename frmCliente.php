@@ -4,22 +4,18 @@
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
 
-  if (!isset($professor)) {
-    $professor = array();
-    $professor['id'] = 0;
-    $professor['nome'] = "";
-    $professor['email'] = "";
-    $professor['area_id'] = 0;
-    $professor['data_aniversario'] = "";
-    $professor['foto'] = "";
+  if (!isset($cliente)) {
+    $cliente = array();
+    $cliente['id'] = 0;
+    $cliente['nome'] = "";
+    $cliente['cpf'] = "";
+    $cliente['telefone'] = 0;
   }
-  $foto = $professor['foto']!= ""? $professor['foto']: 'anonimo.png';
-
   $areas = getAreas();
  ?>
 
  <!doctype html>
- <html lang="en">
+ <html lang="pt-br">
    <head>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -115,20 +111,19 @@
      <img src="imagens/<?php echo $foto ?>">
      <h1>Cadastro de Professor</h1>
      <form class="m-5 container" action="salvarProfessor.php" method="post" enctype="multipart/form-data">
-       <input type="hidden" name="foto" value="<?php echo $professor['foto'];?>">
        <div class="mb-3">
          <label for="id" class="form-label">ID</label>
-         <input readonly type="text" class="form-control" id="id" name="id" value="<?php echo $professor['id'];?>">
+         <input readonly type="text" class="form-control" id="id" name="id" value="<?php echo $cliente['id'];?>">
        </div>
        <div class="mb-3">
          <label for="nome" class="form-label">Nome</label>
-         <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $professor['nome'];?>">
+         <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $cliente['nome'];?>">
        </div>
        <div class="mb-3">
-         <label for="area_id" class="form-label">Area</label>
+         <label for="area_id" class="form-label">Animal</label>
          <select class="form-select" name="area_id" id="area_id">
            <?php
-             foreach ($areas as $area) {
+             foreach ($animal as $aanimal) {
                $selected = $area['id'] == $professor['area_id']?'selected':'';
                echo "<option $selected value='{$area['id']}'>{$area['descricao']}</option>";
              }

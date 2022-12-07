@@ -5,13 +5,12 @@
   error_reporting(E_ALL);
 
 // variavel global que contem informacoes do método GET
-  $id = $_GET['id'];
-  $idPet = $_GET['idPet'];
+  $idpet = $_GET['idPet'];
 
-  $cliente = getCliente($id);
-  $pet = getAnimal($idPet);
-  // excluirAnimal($idPet);
-  // excluirCliente($id);
-  setcookie("mensagem", "Cliente {$cliente['nome']} {$id} e {$idPet}  Pet {$pet['nome']} foi excluído");
+  $pet = getAnimal($idpet);
+  $cliente = getCliente($pet['cod_dono']);
+  excluirAnimal($idpet);
+  excluirCliente($pet['cod_dono']);
+  setcookie("mensagem", "Cliente {$cliente['nome']} e Pet {$pet['nome']} foi excluído");
   header('location: cliente.php');
  ?>

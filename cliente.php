@@ -106,7 +106,7 @@
       ?>
 
      <h1>Lista de Professores</h1>
-     <a href="frmProfessor.php" class="btn btn-primary">Novo</a>
+     <a href="frmCliente.php" class="btn btn-primary">Novo</a>
      <table class="table table-striped table-bordered">
        <thead>
          <tr>
@@ -132,7 +132,7 @@
               <td>{$dado['nomePet']}</td>
               <td>{$dado['racaPet']}</td>
               <td>{$dado['idPet']}</td>
-              <td><a href='excluirCliente.php?id={$dado['id']} idPet='{$dado['idPet']}' class="btn btn-danger">-</a></td>
+              <td><a href='excluirCliente.php?idPet={$dado['idPet']}' class='btn btn-danger'>-</a></td>
               <td><a href='editarProfessor.php?id={$dado['id']}' class='btn btn-primary'>+</a></td>
            </tr>";
          }

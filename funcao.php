@@ -66,9 +66,9 @@
     return $cliente;
   }
   
-  function getAreas() {
+  function getAnimais() {
     $conexao = getConnection();
-    $sql = "SELECT * FROM area ORDER BY descricao";
+    $sql = "SELECT animal.*, cliente.nome as nomeDono FROM animal join cliente on cinente.id = animal.cod_dono ORDER BY nome";
     $sentenca = $conexao->query($sql, PDO::FETCH_ASSOC);
     $dados = $sentenca->fetchAll();
     $conexao = null;
@@ -96,7 +96,7 @@
 
   function getAnimal($id) {
     $conexao = getConnection();
-    $sql = "SELECT nome FROM animal WHERE id=?";
+    $sql = "SELECT * FROM animal WHERE id=?";
     $sentenca = $conexao->prepare($sql);
     $sentenca->bindParam(1, $id);
     $sentenca->execute();
