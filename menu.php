@@ -23,6 +23,15 @@ if (!isset($_SESSION['usuario'])) {
           <a class="nav-link active" aria-current="page" href="animais.php">Pets</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="produtos.php">Produtos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="lojas.php">Lojas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="funcionarios.php">Funcionarios</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="logout.php">Sair</a>
         </li>
       </ul>

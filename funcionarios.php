@@ -65,6 +65,9 @@ error_reporting(E_ALL);
       min-height: 75rem;
       padding-top: 4.5rem;
     }
+    td>img {
+      width: 40px;
+    }
   </style>
 </head>
 <body>
@@ -75,46 +78,39 @@ error_reporting(E_ALL);
     <div class="bg-light p-5 rounded">
       <?php
         if (isset($_COOKIE['mensagem'])) {
-          echo "
-            <div class='alert alert-success'>
-              {$_COOKIE['mensagem']}
-            </div>";
+          echo "<div class='alert alert-success'>
+                  {$_COOKIE['mensagem']}
+                </div>";
           unset($_COOKIE['mensagem']);
           setcookie("mensagem", "", 1);
         }
       ?>
-      <h1>Lista de Pets</h1>
-      <a href="frmAnimal.php" class="btn btn-primary">Novo</a>
+      <h1>Funcionarios Cadastrados</h1>
+      <a href="frmFuncionario.php" class="btn btn-primary">Novo</a>
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
-            <th></th>
             <th>Nome</th>
-            <th>Idade</th>
-            <th>Raça</th>
-            <th>Sexo</th>
-            <th>Dono do Pet</th>
+            <th>Cpf</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th>Loja</th>
             <th>Excluir</th>
             <th>Editar</th>
           </tr>
         </thead>
         <tbody>
           <?php
-            $animais = getAnimais();
-            foreach ($animais as $animal) {
-              $data = date('Y') - date("Y", strtotime($animal['idade']));
-              $foto = $animal['foto']!= ""? $animal['foto']: 'anonimo.webp';
-              echo "<tr>
-                      <td>
-                        <img src='imagens/$foto'>
-                      </td>
-                      <td>{$animal['nome']}</td>
-                      <td>$data Anos</td>
-                      <td>{$animal['raca']}</td>
-                      <td>{$animal['sexo']}</td>
-                      <td>{$animal['nomeDono']}</td>
-                      <td><a href='excluirAnimal.php?id={$animal['id']}' class='btn btn-danger'>-</a></td>
-                      <td><a href='editarAnimal.php?id={$animal['id']}' class='btn btn-primary'>+</a></td>
+            $dados = getFuncionarios();
+            foreach ($dados as $dado) {
+              echo " <tr>
+                      <td>{$dado['nome']}</td>
+                      <td>{$dado['cpf']}</td>
+                      <td>{$dado['telefone']}</td>
+                      <td>{$dado['endereco']}</td>
+                      <td>{$dado['loja']}</td>
+                      <td><a href='excluirFuncionario.php?id={$dado['id']}' class='btn btn-danger'>-</a></td>
+                      <td><a href='editaFuncionario.php?id={$dado['id']}' class='btn btn-primary'>+</a></td>
                     </tr>";
             }
           ?>

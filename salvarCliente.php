@@ -9,11 +9,12 @@ $cliente['id'] = $_POST['id'];
 $cliente['nome'] = $_POST['nome'];
 $cliente['cpf'] = $_POST['cpf'];
 $cliente['telefone'] = $_POST['telefone'];
-if ($professor['id'] == 0) {
+if ($cliente['id'] == 0) {
   salvarCliente($cliente);
+  setcookie("mensagem", "O Cliente: {$cliente['nome']} foi adicionado com sucesso!!");
 } else {
   alterarCliente($cliente);
+  setcookie("mensagem", "Cliente {$cliente['nome']} atualizada com sucesso!!");
 }
-setcookie("mensagem", "O Cliente: {$cliente['nome']} foi adicionado com sucesso!!");
 header('location: cliente.php');
 ?>
