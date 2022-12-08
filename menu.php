@@ -32,6 +32,12 @@ if (!isset($_SESSION['usuario'])) {
           <a class="nav-link active" aria-current="page" href="funcionarios.php">Funcionarios</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="adocao.php">Adoção</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="notas.php">Notas</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="logout.php">Sair</a>
         </li>
       </ul>

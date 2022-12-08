@@ -8,14 +8,12 @@ if (!isset($animal)) {
   $animal = array();
   $animal['id'] = 0;
   $animal['nome'] = "";
-  $animal['idade'] = "";
   $animal['raca'] = "";
   $animal['sexo'] = "";
+  $animal['idade'] = "";
   $animal['foto'] = "";
-  $animal['id_dono'] = 0;
 }
 $foto = $animal['foto']!= ""? $animal['foto']: 'anonimo.webp';
-$donos = getClientes(0);
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -85,43 +83,33 @@ $donos = getClientes(0);
   ?>
   <main class="container">
     <div class="bg-light p-5 rounded">
-      <h1>Cadastro de Pet</h1>
-      <form class="m-5 container" action="salvarAnimal.php" method="post">
+      <h1>Cadastro para Adoção</h1>
+      <form class="m-5 container" action="salvarAdAnimal.php" method="post">
         <input type="hidden" name="id" id="id" value="<?php echo $animal['id']; ?>">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome</label>
           <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $animal['nome']; ?>">
         </div>
         <div class="mb-3">
-          <label for="idade" class="form-label">Data de Nacimento</label>
-          <input type="date" class="form-control" id="idade" name="idade" value="<?php echo $animal['idade']; ?>">
+            <label for="raca" class="form-label">Raça</label>
+            <input type="text" class="form-control" id="raca" name="raca" value="<?php echo $animal['raca']; ?>">
         </div>
         <div class="mb-3">
-          <label for="raca" class="form-label">Raça</label>
-          <input type="text" class="form-control" id="raca" name="raca" value="<?php echo $animal['raca']; ?>">
+            <label for="sexo" class="form-label">Sexo</label>
+            <input class="form-control" list="datalistOptions" name="sexo" id="sexo" value="<?php echo $animal['sexo']; ?>">
+            <datalist id="datalistOptions">
+                <option name="sexo" value="Fêmea">
+                <option name="sexo" value="Macho">
+            </datalist>
         </div>
         <div class="mb-3">
-          <label for="sexo" class="form-label">Sexo</label>
-          <input class="form-control" list="datalistOptions" name="sexo" id="sexo" value="<?php echo $animal['sexo']; ?>">
-          <datalist id="datalistOptions">
-            <option name="sexo" value="Fêmea">
-            <option name="sexo" value="Macho">
-          </datalist>
+            <label for="idade" class="form-label">Data de Nacimento</label>
+            <input type="date" class="form-control" id="idade" name="idade" value="<?php echo $animal['idade']; ?>">
         </div>
         <div class="mb-3">
-          <label for="arquivo" class="form-label">Foto</label>
-          <input type="file" class="form-control" id="arquivo" name="arquivo" accept="image/*">
+            <label for="arquivo" class="form-label">Foto</label>
+            <input type="file" class="form-control" id="arquivo" name="arquivo" accept="image/*">
         </div>
-        <div class="mb-3">
-          <label for="cod_dono" class="form-label">Dono</label>
-          <select class="form-select" name="cod_dono" id="cod_dono">
-            <?php
-              foreach ($donos as $dono) {
-                $selected = $animal['cod_dono'] == $dono['id']?'selected':'';
-                echo "<option $selected name='cod_dono' value='{$dono['id']}'>{$dono['nome']}</option>";
-              }
-            ?>
-          </select>
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
       </form>

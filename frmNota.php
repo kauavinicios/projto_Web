@@ -4,18 +4,19 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-if (!isset($animal)) {
-  $animal = array();
-  $animal['id'] = 0;
-  $animal['nome'] = "";
-  $animal['idade'] = "";
-  $animal['raca'] = "";
-  $animal['sexo'] = "";
-  $animal['foto'] = "";
-  $animal['id_dono'] = 0;
-}
-$foto = $animal['foto']!= ""? $animal['foto']: 'anonimo.webp';
-$donos = getClientes(0);
+// if (!isset($nota)) 
+// {
+//   $nota = array();
+//   $nota['id'] = 0;
+//   $nota['id_cliente'] = "";
+//   $nota['id_loja'] = "";
+//   $nota['id_produto'] = "";
+//   $nota['qtd'] = 0;
+//   $nota['data_compra'] = date('d/m/Y');
+// }
+$lojas = getLojas();
+$produtos = getProdutos();
+$clientes = getClientes(0);
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -51,7 +52,7 @@ $donos = getClientes(0);
     .b-example-vr {
       flex-shrink: 0;
       width: 1.5rem;
-     height: 100vh;
+      height: 100vh;
     }
     .bi {
       vertical-align: -.125em;
@@ -77,6 +78,12 @@ $donos = getClientes(0);
       min-height: 75rem;
       padding-top: 4.5rem;
     }
+    .container img {
+      width: 200px;
+      border: 1px solid gray;
+      padding: 0.5rem;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
@@ -85,43 +92,49 @@ $donos = getClientes(0);
   ?>
   <main class="container">
     <div class="bg-light p-5 rounded">
-      <h1>Cadastro de Pet</h1>
-      <form class="m-5 container" action="salvarAnimal.php" method="post">
-        <input type="hidden" name="id" id="id" value="<?php echo $animal['id']; ?>">
+      <h1>Banco De Notas</h1>
+      <form class="m-5 container" action="salvarNotas.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" id="id" value="<?php echo $loja['id']; ?>">
         <div class="mb-3">
-          <label for="nome" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $animal['nome']; ?>">
-        </div>
-        <div class="mb-3">
-          <label for="idade" class="form-label">Data de Nacimento</label>
-          <input type="date" class="form-control" id="idade" name="idade" value="<?php echo $animal['idade']; ?>">
-        </div>
-        <div class="mb-3">
-          <label for="raca" class="form-label">Raça</label>
-          <input type="text" class="form-control" id="raca" name="raca" value="<?php echo $animal['raca']; ?>">
-        </div>
-        <div class="mb-3">
-          <label for="sexo" class="form-label">Sexo</label>
-          <input class="form-control" list="datalistOptions" name="sexo" id="sexo" value="<?php echo $animal['sexo']; ?>">
-          <datalist id="datalistOptions">
-            <option name="sexo" value="Fêmea">
-            <option name="sexo" value="Macho">
-          </datalist>
-        </div>
-        <div class="mb-3">
-          <label for="arquivo" class="form-label">Foto</label>
-          <input type="file" class="form-control" id="arquivo" name="arquivo" accept="image/*">
-        </div>
-        <div class="mb-3">
-          <label for="cod_dono" class="form-label">Dono</label>
-          <select class="form-select" name="cod_dono" id="cod_dono">
+          <label for="id_cliente" class="form-label">Clientes</label>
+          <select class="form-select" name="id_cliente" id="id_cliente">
             <?php
-              foreach ($donos as $dono) {
-                $selected = $animal['cod_dono'] == $dono['id']?'selected':'';
-                echo "<option $selected name='cod_dono' value='{$dono['id']}'>{$dono['nome']}</option>";
+              foreach ($clientes as $cliente) {
+                $selected = $nota['id'] == $cliente['id']?'selected':'';
+                echo "<option $selected name='id_cliente' value='{$cliente['id']}'>{$cliente['nome']}</option>";
               }
             ?>
           </select>
+        </div>
+        <div class="mb-3">
+          <label for="id_loja" class="form-label">Loja</label>
+          <select class="form-select" name="id_loja" id="id_loja">
+            <?php
+              foreach ($lojas as $loja) {
+                $selected = $nota['id_loja'] == $loja['id']?'selected':'';
+                echo "<option $selected name='id_loja' value='{$loja['id']}'>{$loja['nome']}</option>";
+              }
+            ?>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="id_produto" class="form-label">Produto</label>
+          <select class="form-select" name="id_produto" id="id_produto">
+            <?php
+              foreach ($produtos as $produto) {
+                $selected = $nota['id_produto'] == $produto['id']?'selected':'';
+                echo "<option $selected name='id_produto' value='{$produto['id']}'>{$produto['nome']}</option>";
+              }
+            ?>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="qtd" class="form-label">Qantidade</label>
+          <input type="number" class="form-control" id="qtd" name="qtd" value="0">
+        </div>
+        <div class="mb-3">
+          <label for="data_compra" class="form-label">Data de Compra</label>
+          <input type="date" class="form-control" id="data_compra" name="data_compra">
         </div>
         <button type="submit" class="btn btn-primary">Salvar</button>
       </form>

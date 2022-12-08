@@ -323,5 +323,100 @@ function excluirFuncionario($id)
   $sentenca->execute();
   $conexao = null;
 }
+// ----------------------------------------------------------
 
+function getAdAnimais()
+{
+  $conexao = getConnection();
+  $sql = "SELECT * FROM adocao";
+  $sentenca = $conexao->query($sql, PDO::FETCH_ASSOC);
+  $dados = $sentenca->fetchAll();
+  $conexao = null;
+  return $dados;
+}
+
+function getAdAnimal($id)
+{
+  $conexao = getConnection();
+  $sql = "SELECT * FROM adocao WHERE id=?";
+  $sentenca = $conexao->prepare($sql);
+  $sentenca->bindParam(1, $id);
+  $sentenca->execute();
+  $animal = $sentenca->fetch(PDO::FETCH_ASSOC);
+  $conexao = null;
+  return $animal;
+}
+
+function salvarAdAnimal($animal)
+{
+  $conexao = getConnection();
+  $sql = "INSERT INTO adocao(nome, raca, sexo, idade, foto) VALUES (?,?,?,?,?)";
+  $sentenca = $conexao->prepare($sql);
+  $sentenca->bindParam(1, $animal['nome']);
+  $sentenca->bindParam(2, $animal['raca']);
+  $sentenca->bindParam(3, $animal['sexo']);
+  $sentenca->bindParam(4, $animal['idade']);
+  $sentenca->bindParam(5, $animal['foto']);
+  $sentenca->execute();
+  $conexao = null;
+}
+
+function alterarAdAnimal($animal)
+{
+  $conexao = getConnection();
+  $sql = "UPDATE adocao SET nome=?,raca=?,sexo=?,idade=?,foto=? WHERE id=?";
+  $sentenca = $conexao->prepare($sql);
+  $sentenca->bindParam(1, $animal['nome']);
+  $sentenca->bindParam(2, $animal['raca']);
+  $sentenca->bindParam(3, $animal['sexo']);
+  $sentenca->bindParam(4, $animal['idade']);
+  $sentenca->bindParam(5, $animal['foto']);
+  $sentenca->bindParam(6, $animal['id']);
+  $sentenca->execute();
+  $conexao = null;
+}
+
+function excluirAdAnimal($id)
+{
+  $conexao = getConnection();
+  $sql = "DELETE FROM adocao WHERE id=?";
+  $sentenca = $conexao->prepare($sql);
+  $sentenca->bindParam(1, $id);
+  $sentenca->execute();
+  $conexao = null;
+}
+
+function getnotas()
+{
+  $conexao = getConnection();
+  $sql = "SELECT nota.*, cliente.nome as cliente, loja.nome as loja, produto.nome as produto FROM nota join cliente on nota.id_cliente = cliente.id join loja on nota.id_loja = loja.id join produto on nota.id_produto = produto.id";
+  $sentenca = $conexao->query($sql, PDO::FETCH_ASSOC);
+  $dados = $sentenca->fetchAll();
+  $conexao = null;
+  return $dados;
+}
+
+function salvarNota($nota)
+{
+  $conexao = getConnection();
+  $sql = "INSERT INTO nota(id_cliente, id_loja, id_produto, qtd, data_compra) VALUES (?,?,?,?,?)";
+  $sentenca = $conexao->prepare($sql);
+  $sentenca->bindParam(1, $nota['id_cliente']);
+  $sentenca->bindParam(2, $nota['id_loja']);
+  $sentenca->bindParam(3, $nota['id_produto']);
+  $sentenca->bindParam(4, $nota['qtd']);
+  $sentenca->bindParam(5, $nota['data_compra']);
+  $sentenca->execute();
+  $conexao = null;
+}
+
+function excluirNota($id)
+{
+  $conexao = getConnection();
+  $sql = "DELETE FROM nota WHERE id=?";
+  $sentenca = $conexao->prepare($sql);
+  $sentenca->bindParam(1, $id);
+  $sentenca->execute();
+  $conexao = null;
+}
 ?>

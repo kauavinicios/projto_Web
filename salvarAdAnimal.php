@@ -26,12 +26,12 @@ if ($arquivo['name'] != "") {
 }
 
 if ($animal['id'] == 0) {
-  salvarAnimal($animal);
-  setcookie("mensagem", "Pet: {$animal['nome']} adicionado com sucesso!!");
+  salvarAdAnimal($animal);
+  setcookie("mensagem", "Pet: {$animal['nome']} adicionado a adoção com sucesso!!");
 } else {
-  alterarAnimal($animal);
+  alterarAdAnimal($animal);
   setcookie("mensagem", "Pet {$animal['nome']} atualizado com sucesso!!");
 
 }
-header('location: animais.php');
+header('location: adocao.php');
 ?>
