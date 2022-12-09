@@ -46,6 +46,28 @@ INSERT INTO `adocao` (`id`, `nome`, `raca`, `sexo`, `idade`, `foto`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `cliente`
+--
+
+CREATE TABLE `cliente` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `cpf` varchar(11) NOT NULL,
+  `telefone` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Extraindo dados da tabela `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `nome`, `cpf`, `telefone`) VALUES
+(1, 'kaua', '12345678910', 999999999),
+(2, 'rafael', '12345678911', 999999991),
+(5, 'Bruno', '12345678922', 925361221);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `animal`
 --
 
@@ -70,24 +92,23 @@ INSERT INTO `animal` (`id`, `nome`, `idade`, `raca`, `sexo`, `foto`, `cod_dono`)
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cliente`
+-- Estrutura da tabela `loja`
 --
 
-CREATE TABLE `cliente` (
+CREATE TABLE `loja` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
-  `cpf` varchar(11) NOT NULL,
-  `telefone` int(20) NOT NULL
+  `endereco` varchar(50) NOT NULL,
+  `contato` int(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Extraindo dados da tabela `cliente`
+-- Extraindo dados da tabela `loja`
 --
 
-INSERT INTO `cliente` (`id`, `nome`, `cpf`, `telefone`) VALUES
-(1, 'kaua', '12345678910', 999999999),
-(2, 'rafael', '12345678911', 999999991),
-(5, 'Bruno', '12345678922', 925361221);
+INSERT INTO `loja` (`id`, `nome`, `endereco`, `contato`) VALUES
+(4, 'pet shop do tio joão', 'ali na esquina', 991234567),
+(6, 'pet shop prometeus', 'centro', 51421236);
 
 -- --------------------------------------------------------
 
@@ -114,23 +135,23 @@ INSERT INTO `funcionario` (`id`, `nome`, `cpf`, `telefone`, `endereco`, `cod_loj
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `loja`
+-- Estrutura da tabela `produto`
 --
 
-CREATE TABLE `loja` (
+CREATE TABLE `produto` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
-  `endereco` varchar(50) NOT NULL,
-  `contato` int(9) NOT NULL
+  `preco` double NOT NULL,
+  `descricao` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Extraindo dados da tabela `loja`
+-- Extraindo dados da tabela `produto`
 --
 
-INSERT INTO `loja` (`id`, `nome`, `endereco`, `contato`) VALUES
-(4, 'pet shop do tio joão', 'ali na esquina', 991234567),
-(6, 'pet shop prometeus', 'centro', 51421236);
+INSERT INTO `produto` (`id`, `nome`, `preco`, `descricao`) VALUES
+(5, 'ração de cachorro', 80, 'ração de cachorro de grande porte'),
+(6, 'ração de gato', 70, 'ração para gatos adultos');
 
 -- --------------------------------------------------------
 
@@ -153,27 +174,6 @@ CREATE TABLE `nota` (
 
 INSERT INTO `nota` (`id`, `id_cliente`, `id_loja`, `id_produto`, `qtd`, `data_compra`) VALUES
 (4, 1, 4, 6, 1, '2019-06-04');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `produto`
---
-
-CREATE TABLE `produto` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `preco` double NOT NULL,
-  `descricao` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Extraindo dados da tabela `produto`
---
-
-INSERT INTO `produto` (`id`, `nome`, `preco`, `descricao`) VALUES
-(5, 'ração de cachorro', 80, 'ração de cachorro de grande porte'),
-(6, 'ração de gato', 70, 'ração para gatos adultos');
 
 -- --------------------------------------------------------
 
@@ -205,6 +205,12 @@ ALTER TABLE `adocao`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `cliente`
+--
+ALTER TABLE `cliente`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `animal`
 --
 ALTER TABLE `animal`
@@ -212,9 +218,9 @@ ALTER TABLE `animal`
   ADD KEY `fk_animal_cliente` (`cod_dono`);
 
 --
--- Índices para tabela `cliente`
+-- Índices para tabela `loja`
 --
-ALTER TABLE `cliente`
+ALTER TABLE `loja`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -225,9 +231,9 @@ ALTER TABLE `funcionario`
   ADD KEY `fk_funcionario_loja` (`cod_loja`);
 
 --
--- Índices para tabela `loja`
+-- Índices para tabela `produto`
 --
-ALTER TABLE `loja`
+ALTER TABLE `produto`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -238,12 +244,6 @@ ALTER TABLE `nota`
   ADD KEY `fk_nota_cliente` (`id_cliente`),
   ADD KEY `fk_nota_loja` (`id_loja`),
   ADD KEY `fk_nota_produto` (`id_produto`);
-
---
--- Índices para tabela `produto`
---
-ALTER TABLE `produto`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `usuario`
