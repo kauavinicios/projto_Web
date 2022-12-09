@@ -1,3 +1,4 @@
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -8,6 +9,9 @@
   @media (min-width: 768px) {
     .bd-placeholder-img-lg {
       font-size: 3.5rem;
+    }
+    .principal{
+      text-align: center;
     }
   }
   .b-example-divider {
@@ -45,10 +49,35 @@
   body {
     min-height: 75rem;
     padding-top: 4.5rem;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
   }
   .container img {
     width: 200px;
     border: 1px solid gray;
     padding: 0.5rem;
     border-radius: 10px;
+  }
+  nav{
+    background: linear-gradient(90deg, rgba(2,0,36,1) 37%, rgba(20,109,184,0.8911939775910365) 69%, rgba(0,212,255,1) 89%);
+  }
+  .log{
+    color: aliceblue;
+    width: 40rem;
+    box-shadow: 10px 10px 10px rgba(9,9,121,1);
+  }
+  .log input{
+    background: none;
+    border: 1px 0px 0px 0px solid rgba(20,109,184,0.8911939775910365);
+    color: aliceblue;
+  }
+  .log .but{
+    background-color:  #0d7ddd;
+    margin-bottom: 1rem;
+  }
+  .log .but:hover{
+    background-color:  rgba(0,212,255,1);
+  }
+  .principal{
+    color: rgba(9,9,121,1);
+    text-align: right;
   }

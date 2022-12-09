@@ -4,16 +4,6 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// if (!isset($nota)) 
-// {
-//   $nota = array();
-//   $nota['id'] = 0;
-//   $nota['id_cliente'] = "";
-//   $nota['id_loja'] = "";
-//   $nota['id_produto'] = "";
-//   $nota['qtd'] = 0;
-//   $nota['data_compra'] = date('d/m/Y');
-// }
 $lojas = getLojas();
 $produtos = getProdutos();
 $clientes = getClientes(0);
@@ -77,6 +67,10 @@ $clientes = getClientes(0);
     body {
       min-height: 75rem;
       padding-top: 4.5rem;
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    }
+    nav{
+    background: linear-gradient(90deg, rgba(2,0,36,1) 37%, rgba(20,109,184,0.8911939775910365) 69%, rgba(0,212,255,1) 89%);
     }
     .container img {
       width: 200px;

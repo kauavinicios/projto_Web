@@ -7,7 +7,7 @@ if (!isset($_SESSION['usuario'])) {
   exit(0);
 }
 ?>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">Inicio</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"

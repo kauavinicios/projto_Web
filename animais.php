@@ -12,10 +12,9 @@ error_reporting(E_ALL);
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.104.2">
-  <title>Construção de Páginas Web II</title>
+  <title>Animais</title>
   <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbar-fixed/">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -56,9 +55,7 @@ error_reporting(E_ALL);
               $data = date('Y') - date("Y", strtotime($animal['idade']));
               $foto = $animal['foto']!= ""? $animal['foto']: 'anonimo.webp';
               echo "<tr>
-                      <td>
-                        <img src='imagens/$foto'>
-                      </td>
+                      <td style='width: 45px; height: 45px; background: url(./imagens/$foto) no-repeat;'></td>
                       <td>{$animal['nome']}</td>
                       <td>$data Anos</td>
                       <td>{$animal['raca']}</td>

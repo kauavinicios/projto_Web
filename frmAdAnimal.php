@@ -49,7 +49,7 @@ $foto = $animal['foto']!= ""? $animal['foto']: 'anonimo.webp';
     .b-example-vr {
       flex-shrink: 0;
       width: 1.5rem;
-     height: 100vh;
+      height: 100vh;
     }
     .bi {
       vertical-align: -.125em;
@@ -74,6 +74,16 @@ $foto = $animal['foto']!= ""? $animal['foto']: 'anonimo.webp';
     body {
       min-height: 75rem;
       padding-top: 4.5rem;
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    }
+    nav{
+    background: linear-gradient(90deg, rgba(2,0,36,1) 37%, rgba(20,109,184,0.8911939775910365) 69%, rgba(0,212,255,1) 89%);
+    }
+    .container img {
+      width: 200px;
+      border: 1px solid gray;
+      padding: 0.5rem;
+      border-radius: 10px;
     }
   </style>
 </head>

@@ -12,10 +12,9 @@ error_reporting(E_ALL);
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.104.2">
-  <title>Construção de Páginas Web II</title>
+  <title>clientes</title>
   <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbar-fixed/">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -23,7 +22,7 @@ error_reporting(E_ALL);
     include_once "menu.php";
   ?>
   <main class="container">
-    <div class="bg-light p-5 rounded">
+    <div class="bg-light p-5 rounded ">
       <?php
         if (isset($_COOKIE['mensagem'])) {
           echo "<div class='alert alert-success'>
