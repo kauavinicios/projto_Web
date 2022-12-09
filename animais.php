@@ -61,8 +61,8 @@ error_reporting(E_ALL);
                       <td>{$animal['raca']}</td>
                       <td>{$animal['sexo']}</td>
                       <td>{$animal['nomeDono']}</td>
-                      <td><a href='excluirAnimal.php?id={$animal['id']}' class='btn btn-danger'>-</a></td>
-                      <td><a href='editarAnimal.php?id={$animal['id']}' class='btn btn-primary'>+</a></td>
+                      <td><a href='excluir.php?id={$animal['id']}&opc=2' class='btn btn-danger'>-</a></td>
+                      <td><a href='editar.php?id={$animal['id']}&opc=2' class='btn btn-primary'>+</a></td>
                     </tr>";
             }
           ?>

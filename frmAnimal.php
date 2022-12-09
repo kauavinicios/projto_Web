@@ -37,7 +37,7 @@ $donos = getClientes(0);
   <main class="container">
     <div class="bg-light p-5 rounded">
       <h1>Cadastro de Pet</h1>
-      <form class="m-5 container" action="salvarAnimal.php" method="post">
+      <form class="m-5 container" action="salvar.php?opc=2" method="post">
         <input type="hidden" name="id" id="id" value="<?php echo $animal['id']; ?>">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome</label>

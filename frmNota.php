@@ -87,7 +87,7 @@ $clientes = getClientes(0);
   <main class="container">
     <div class="bg-light p-5 rounded">
       <h1>Banco De Notas</h1>
-      <form class="m-5 container" action="salvarNotas.php" method="post" enctype="multipart/form-data">
+      <form class="m-5 container" action="salvar.php?opc=7" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" id="id" value="<?php echo $loja['id']; ?>">
         <div class="mb-3">
           <label for="id_cliente" class="form-label">Clientes</label>

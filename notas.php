@@ -57,7 +57,7 @@ error_reporting(E_ALL);
                       <td>{$nota['produto']}</td>
                       <td>{$nota['qtd']}</td>
                       <td>$data</td>
-                      <td><a href='excluirNota.php?id={$nota['id']}' class='btn btn-danger'>-</a></td>
+                      <td><a href='excluir.php?id={$nota['id']}&opc=7' class='btn btn-danger'>-</a></td>
                     </tr>";
             }
           ?>

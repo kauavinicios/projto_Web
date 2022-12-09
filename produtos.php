@@ -52,8 +52,8 @@ error_reporting(E_ALL);
                       <td>{$dado['nome']}</td>
                       <td>{$dado['descricao']}</td>
                       <td>R$ {$dado['preco']}</td>
-                      <td><a href='excluirProduto.php?id={$dado['id']}' class='btn btn-danger'>-</a></td>
-                      <td><a href='editaProduto.php?id={$dado['id']}' class='btn btn-primary'>+</a></td>
+                      <td><a href='excluir.php?id={$dado['id']}&opc=6' class='btn btn-danger'>-</a></td>
+                      <td><a href='editar.php?id={$dado['id']}&opc=6' class='btn btn-primary'>+</a></td>
                     </tr>";
             }
           ?>

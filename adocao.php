@@ -50,7 +50,7 @@ error_reporting(E_ALL);
         <tbody>
           <?php
             $animais = getAdAnimais();
-            foreach ($animais as $animal) {
+            foreach ($animais as $animal) { 
               $data = date('Y') - date("Y", strtotime($animal['idade']));
               $foto = $animal['foto']!= ""? $animal['foto']: 'anonimo.webp';
               echo "<tr>
@@ -59,8 +59,8 @@ error_reporting(E_ALL);
                       <td>$data Anos</td>
                       <td>{$animal['raca']}</td>
                       <td>{$animal['sexo']}</td>
-                      <td><a href='excluirAdAnimal.php?id={$animal['id']}' class='btn btn-danger'>-</a></td>
-                      <td><a href='editarAdAnimal.php?id={$animal['id']}' class='btn btn-primary'>+</a></td>
+                      <td><a href='excluir.php?id={$animal['id']}&opc=3' class='btn btn-danger'>-</a></td>
+                      <td><a href='editar.php?id={$animal['id']}&opc=3' class='btn btn-primary'>+</a></td>
                     </tr>";
             }
           ?>

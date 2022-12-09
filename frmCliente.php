@@ -32,7 +32,7 @@ if (!isset($cliente))
   <main class="container">
     <div class="bg-light p-5 rounded">
       <h1>Cadastro de Cliente</h1>
-      <form class="m-5 container" action="salvarCliente.php" method="post" enctype="multipart/form-data">
+      <form class="m-5 container" action="salvar.php?opc=1" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" id="id" value="<?php echo $cliente['id']; ?>">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome</label>

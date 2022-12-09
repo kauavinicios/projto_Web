@@ -56,8 +56,8 @@ error_reporting(E_ALL);
                       <td>{$dado['telefone']}</td>
                       <td>{$dado['endereco']}</td>
                       <td>{$dado['loja']}</td>
-                      <td><a href='excluirFuncionario.php?id={$dado['id']}' class='btn btn-danger'>-</a></td>
-                      <td><a href='editaFuncionario.php?id={$dado['id']}' class='btn btn-primary'>+</a></td>
+                      <td><a href='excluir.php?id={$dado['id']}&opc=4' class='btn btn-danger'>-</a></td>
+                      <td><a href='editar.php?id={$dado['id']}&opc=4' class='btn btn-primary'>+</a></td>
                     </tr>";
             }
           ?>

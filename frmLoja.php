@@ -91,7 +91,7 @@ if (!isset($loja))
   <main class="container">
     <div class="bg-light p-5 rounded">
       <h1>Cadastro de Loja</h1>
-      <form class="m-5 container" action="salvarLoja.php" method="post" enctype="multipart/form-data">
+      <form class="m-5 container" action="salvar.php?opc=5" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" id="id" value="<?php echo $loja['id']; ?>">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome</label>

@@ -94,7 +94,7 @@ $foto = $animal['foto']!= ""? $animal['foto']: 'anonimo.webp';
   <main class="container">
     <div class="bg-light p-5 rounded">
       <h1>Cadastro para Adoção</h1>
-      <form class="m-5 container" action="salvarAdAnimal.php" method="post">
+      <form class="m-5 container" action="salvar.php?opc=3" method="post">
         <input type="hidden" name="id" id="id" value="<?php echo $animal['id']; ?>">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome</label>
